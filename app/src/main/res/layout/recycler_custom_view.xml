@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-             />
+            android:contentDescription="@string/app_name" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 app:iconGravity="textStart"
-                android:text="like"
+                android:text="@string/like"
                 app:elevation="2dp"
                 app:icon="@drawable/ic_thumb_up_black_24dp" />
 
@@ -52,7 +52,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 app:iconGravity="textStart"
-                android:text="save"
+                android:text="@string/save"
                 app:elevation="2dp"
                 app:icon="@drawable/ic_file_download_black_24dp" />
 
@@ -65,7 +65,7 @@
                 android:gravity="center"
                 android:layout_weight="1"
                 app:iconGravity="textStart"
-                android:text="share it"
+                android:text="@string/share_it"
                 app:elevation="2dp"
                 app:icon="@drawable/ic_share_black_24dp" />
         </LinearLayout>
