@@ -45,17 +45,28 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
         final memes m=list.get(position);
         holder.imageView.setScaleType(FIT_START);
         holder.imageView.setImageResource(m.getImage());
-        Uri uri=Uri.parse("android.resource://com.example.memebox.Adapters/"
-                + holder.imageView.getResources().getDrawable(m.getImage()));
-        final String path=uri.toString();
+
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_STREAM,path);
                 shareIntent.setType("images/*");
+                shareIntent.putExtra(Intent.EXTRA_STREAM,"");
                 context.startActivity(Intent.createChooser(shareIntent,"Share Via"));
+            }
+        });
+        holder.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
