@@ -1,6 +1,8 @@
 package com.example.memebox.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +41,23 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull holder holder, int position) {
-        memes m=list.get(position);
+    public void onBindViewHolder(@NonNull final holder holder, final int position) {
+        final memes m=list.get(position);
         holder.imageView.setScaleType(FIT_START);
         holder.imageView.setImageResource(m.getImage());
+        Uri uri=Uri.parse("android.resource://com.example.memebox.Adapters/"
+                + holder.imageView.getResources().getDrawable(m.getImage()));
+        final String path=uri.toString();
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_STREAM,path);
+                shareIntent.setType("images/*");
+                context.startActivity(Intent.createChooser(shareIntent,"Share Via"));
+            }
+        });
     }
 
     @Override
@@ -52,11 +67,13 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
 
     class holder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        Button button;
+        Button like,share,save;
         holder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.image_meme);
-            button=itemView.findViewById(R.id.like_me);
+            like=itemView.findViewById(R.id.like_me);
+            share=itemView.findViewById(R.id.share_me);
+            save=itemView.findViewById(R.id.save_me);
         }
     }
 
