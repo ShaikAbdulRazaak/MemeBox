@@ -1,13 +1,10 @@
 package com.example.memebox;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 
 import com.example.memebox.Adapters.recyclerAdapter;
 import com.example.memebox.modelClass.memes;
