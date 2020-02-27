@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(new memes(R.drawable.im1));
         arrayList.add(new memes(R.drawable.im2));
         arrayList.add(new memes(R.drawable.im4));
-        arrayList.add(new memes(R.drawable.im5));        arrayList.add(new memes(R.drawable.im6));
+        arrayList.add(new memes(R.drawable.im5));
+        arrayList.add(new memes(R.drawable.im6));
         arrayList.add(new memes(R.drawable.im7));
         recyclerAdapter recyclerAdapter=new recyclerAdapter(MainActivity.this,
                 R.layout.recycler_custom_view,arrayList);

@@ -10,8 +10,7 @@
     app:cardMaxElevation="2dp"
     app:contentPadding="10dp"
     app:cardPreventCornerOverlap="false"
-    app:strokeColor="#777"
-    app:strokeWidth="1dp">
+   >
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -27,12 +26,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_meme"
             android:gravity="center"
+            android:layout_marginTop="7dp"
             android:orientation="horizontal"
             >
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/like_me"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -45,7 +45,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save_me"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -58,16 +58,16 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/share_me"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="1"
-                app:iconGravity="textStart"
-                android:text="@string/share_it"
+                android:gravity="center"
+                android:text="@string/share"
                 app:elevation="2dp"
-                app:icon="@drawable/ic_share_black_24dp" />
+                app:icon="@drawable/ic_share_black_24dp"
+                app:iconGravity="textStart" />
         </LinearLayout>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
