@@ -11,7 +11,7 @@ import com.example.memebox.R;
 
 public class MemeDatabase extends SQLiteOpenHelper {
     public static String DatabaseName = "Data.db";
-    public static String TableName = "ImageData";
+    private static String TableName = "ImageData";
     public static String COL1 = "SerialNo";
     public static String COL2 = "Image";
     public static String COL3 = "Category";

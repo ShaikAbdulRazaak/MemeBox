@@ -13,28 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.memebox.R;
 import com.example.memebox.modelClass.memes;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.widget.ImageView.ScaleType.FIT_START;
 
 
 public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder> {
     private Context context;
-    private int resource;
-    private ArrayList<memes> list;
+    private List<memes> list;
 
-    public recyclerAdapter(Context context, int resource, ArrayList<memes> list) {
+    public recyclerAdapter(Context context,List<memes>list) {
         this.context = context;
-        this.resource = resource;
-        this.list = list;
+        this.list=list;
     }
 
     @NonNull
     @Override
     public holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(resource, null, false);
+        View view = layoutInflater.inflate(R.layout.recycler_custom_view, null, false);
         return new holder(view);
     }
 
@@ -42,15 +42,13 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
     public void onBindViewHolder(@NonNull final holder holder, final int position) {
         final memes m = list.get(position);
         holder.imageView.setScaleType(FIT_START);
-        holder.imageView.setImageResource(m.getImage());
-
-
+        Picasso.get().load(m.getLocation()).into(holder.imageView);
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-             // shareIntent.putExtra(Intent.EXTRA_STREAM,);
+                 shareIntent.putExtra(Intent.EXTRA_STREAM,Picasso.LoadedFrom.valueOf(m.getLocation()));
                 shareIntent.setType("images/*");
                 context.startActivity(Intent.createChooser(shareIntent, "Share"));
             }
