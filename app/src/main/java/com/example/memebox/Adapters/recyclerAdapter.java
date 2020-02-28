@@ -2,7 +2,6 @@ package com.example.memebox.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
             public void onClick(View v) {
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-                //shareIntent.putExtra(Intent.EXTRA_STREAM,);
+             // shareIntent.putExtra(Intent.EXTRA_STREAM,);
                 shareIntent.setType("images/*");
                 context.startActivity(Intent.createChooser(shareIntent, "Share"));
             }
@@ -76,7 +75,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
         return list.size();
     }
 
-    class holder extends RecyclerView.ViewHolder {
+    static class holder extends RecyclerView.ViewHolder {
         ImageView imageView;
         Button like, share, save;
 

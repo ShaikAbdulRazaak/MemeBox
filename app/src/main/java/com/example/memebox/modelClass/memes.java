@@ -1,7 +1,7 @@
 package com.example.memebox.modelClass;
 
 public class memes {
-    int image;
+    private int image;
     public memes(int image) {
         this.image = image;
     }
@@ -10,7 +10,4 @@ public class memes {
         return image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
 }
