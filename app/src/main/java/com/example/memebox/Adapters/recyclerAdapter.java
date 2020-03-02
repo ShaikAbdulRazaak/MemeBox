@@ -1,11 +1,9 @@
 package com.example.memebox.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -16,10 +14,7 @@ import com.example.memebox.R;
 import com.example.memebox.modelClass.memes;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static android.widget.ImageView.ScaleType.FIT_START;
 
 
 public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder> {
