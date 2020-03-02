@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -25,9 +26,9 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
     private Context context;
     private List<memes> list;
 
-    public recyclerAdapter(Context context,List<memes>list) {
+    public recyclerAdapter(Context context, List<memes> list) {
         this.context = context;
-        this.list=list;
+        this.list = list;
     }
 
     @NonNull
@@ -40,31 +41,25 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
 
     @Override
     public void onBindViewHolder(@NonNull final holder holder, final int position) {
+
         final memes m = list.get(position);
-        holder.imageView.setScaleType(FIT_START);
         Picasso.get().load(m.getLocation()).into(holder.imageView);
-        holder.share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent = new Intent();
-                shareIntent.setAction(Intent.ACTION_SEND);
-                 shareIntent.putExtra(Intent.EXTRA_STREAM,Picasso.LoadedFrom.valueOf(m.getLocation()));
-                shareIntent.setType("images/*");
-                context.startActivity(Intent.createChooser(shareIntent, "Share"));
-            }
+
+
+
+        holder.share.setOnClickListener(v -> {
+           /* Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+          shareIntent.putExtra(Intent.EXTRA_STREAM, );
+            shareIntent.setType("images/*");
+            context.startActivity(Intent.createChooser(shareIntent, "Share"));*/
         });
-        holder.save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.save.setOnClickListener(v -> {
 
 
-            }
         });
-        holder.like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.like.setOnClickListener(v -> {
 
-            }
         });
     }
 

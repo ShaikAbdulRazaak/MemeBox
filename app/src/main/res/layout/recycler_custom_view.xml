@@ -19,7 +19,8 @@
             android:id="@+id/image_meme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
             android:contentDescription="@string/app_name" />
         <LinearLayout
             android:layout_width="match_parent"
