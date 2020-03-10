@@ -2,15 +2,16 @@ package com.example.memebox;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.memebox.Adapters.recyclerAdapter;
+import com.example.memebox.modelClass.ParentMeme;
 import com.example.memebox.modelClass.memes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,24 +26,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.recycler);
         GetApi getApi=RetrofitSingleTon.getInstance().create(GetApi.class);
-        Call<List<memes>>call =getApi.getImages();
-        call.enqueue(new Callback<List<memes>>() {
+        Call<ParentMeme>call =getApi.getImages(100);
+        call.enqueue(new Callback<ParentMeme>() {
+
+
             @Override
-            public void onResponse(Call<List<memes>> call, Response<List<memes>> response) {
+            public void onResponse(Call<ParentMeme> call, Response<ParentMeme> response) {
+
                 generateList(response.body());
+                Log.e("Success","Found");
             }
 
             @Override
-            public void onFailure(Call<List<memes>> call, Throwable t) {
-                Log.d("message",t.getMessage());
+            public void onFailure(Call<ParentMeme> call, Throwable t) {
+
             }
         });
     }
-    void generateList(List<memes> listMemes){
+    void generateList(ParentMeme parentMeme){
+        List<memes> list= parentMeme.getMemes();
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerAdapter recyclerAdapter=new recyclerAdapter(this,listMemes);
+        recyclerAdapter recyclerAdapter=new recyclerAdapter(this,list);
         recyclerView.setAdapter(recyclerAdapter);
     }
 }

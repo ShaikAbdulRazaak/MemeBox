@@ -1,16 +1,19 @@
 package com.example.memebox.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.memebox.R;
+import com.example.memebox.modelClass.ParentMeme;
 import com.example.memebox.modelClass.memes;
 import com.squareup.picasso.Picasso;
 
@@ -38,12 +41,10 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.holder
     public void onBindViewHolder(@NonNull final holder holder, final int position) {
 
         final memes m = list.get(position);
-        Picasso.get().load(m.getLocation()).into(holder.imageView);
-
-
+        Picasso.get().load(m.getUrl()).into(holder.imageView);
 
         holder.share.setOnClickListener(v -> {
-           /* Intent shareIntent = new Intent();
+          /*  Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
           shareIntent.putExtra(Intent.EXTRA_STREAM, );
             shareIntent.setType("images/*");

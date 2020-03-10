@@ -8,7 +8,7 @@ class RetrofitSingleTon {
     static Retrofit getInstance(){
         if(retrofit==null){
            retrofit =new Retrofit.Builder()
-                    .baseUrl("https://oxmanga.com")
+                    .baseUrl("https://meme-api.herokuapp.com")
                     .addConverterFactory(GsonConverterFactory.create()).build();
         }
         return retrofit;
